@@ -27,18 +27,18 @@ int InputNumberWithFilter(string qwerStr, bool zeroEnable, bool negativEnable)//
     return num;  
     }
 // -------------------МЕТОДЫ НАПИСАННЫЕ ДЛЯ ТЕКУЩЕГО ЗАДАНИЯ----------------------------------------------------------------------------
-void PrnArray(int[] array) // ВЫВОД МАССИВА НА ПЕЧАТЬ
+void PrnArrayDouble(double[] array) // ВЫВОД МАССИВА НА ПЕЧАТЬ
     {
     System.Console.WriteLine("[ "+String.Join(", ",array)+"]");
     }
 //------------------------------------------------------------------------------------------------------
-void RandomsArray(int[] array, int min, int max) // МАССИВ - ЗАПОЛНЕНИЕ СЛУЧАЙНЫМИ ЧИСЛАМИ. MAX - МАКСИМАЛЬНО ДОПУСТИМОЕ ЧИСЛО
+void RandomsArrayDouble(double[] array, int min, int max) // МАССИВ - ЗАПОЛНЕНИЕ СЛУЧАЙНЫМИ ЧИСЛАМИ. MAX - МАКСИМАЛЬНО ДОПУСТИМОЕ ЧИСЛО
     {
     Random rnd = new Random();
-    for (int i=0;i<array.Length;i++)  { array[i] = rnd.Next(min,max+1);} 
+    for (int i=0;i<array.Length;i++)  { array[i] = Math.Round((rnd.Next(min,max+1)+rnd.NextDouble()),3);} 
     }
 //------------------------------------------------------------------------------------------------------
-double DifferentsMinMaxInArray(int[] array) //Разность от максимума до минимума в массиве
+double DifferentsMinMaxInArray(double[] array) //Разность от максимума до минимума в массиве
     {
     double min =array[0], max=array[0];
     for (int i=0; i<array.Length; i++)
@@ -46,13 +46,13 @@ double DifferentsMinMaxInArray(int[] array) //Разность от максим
             if (array[i]>max) {max=array[i];}
             else if (array[i]<min) {min=array[i];}
         }
-    return max-min;
+    return (max-min);
     }
 //------------------------------------------------------------------------------------------------------
 // -------------------ОСНОВНАЯ ПРОГРАММА----------------------------------------------------------------------------
 
 int size=InputNumberWithFilter("Введите размер массива :",false,false);
-int [] ar =new int[size];
-RandomsArray(ar,0,100);
-PrnArray(ar);
+double [] ar =new double[size];
+RandomsArrayDouble(ar,0,99);
+PrnArrayDouble(ar);
 Console.WriteLine ("Разность от максимума до минимума в массиве: "+ DifferentsMinMaxInArray(ar));
